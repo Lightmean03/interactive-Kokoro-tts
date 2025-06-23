@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  kokoro-tts:
+    build: .
+    container_name: kokoro-tts-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./audio_cache:/app/temp
+      - ./model_cache:/home/appuser/.cache
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G   
+          cpus: '1.0'    
+        reservations:
+          memory: 1G      
+          cpus: '0.5'     

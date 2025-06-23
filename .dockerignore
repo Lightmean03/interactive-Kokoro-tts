@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Logs
+*.log
+
+# Temporary files
+temp/
+*.tmp
+*.temp
+
+# Model cache (will be mounted as volume)
+model_cache/
+audio_cache/
+
+# Documentation
+README.md
+*.md
+
+# Other
+.env
+.env.local
