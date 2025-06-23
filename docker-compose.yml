@@ -9,15 +9,26 @@ services:
     environment:
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1
+      - HF_HOME=/home/appuser/.cache/huggingface
+      - TRANSFORMERS_CACHE=/home/appuser/.cache/huggingface
     volumes:
+      # Optional: Mount a volume for persistent audio cache
       - ./audio_cache:/app/temp
+      # Optional: Mount for model cache to avoid re-downloading
       - ./model_cache:/home/appuser/.cache
     restart: unless-stopped
+    user: "1000:1000"  # Use host user ID to avoid permission issues
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     deploy:
       resources:
         limits:
-          memory: 2G   
-          cpus: '1.0'    
+          memory: 4G
+          cpus: '2.0'
         reservations:
-          memory: 1G      
-          cpus: '0.5'     
+          memory: 2G
+          cpus: '1.0'
