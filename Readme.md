@@ -21,13 +21,12 @@ A web-based frontend for the [Kokoro Text-to-Speech model](https://huggingface.c
 ## 🖼️ Screenshots
 
 ### Main Interface
-*[Screenshot placeholder - Add screenshot of the main web interface]*
+<img src="https://github.com/Lightmean03/interactive-Kokoro-tts/blob/master/Example%20Screenshots/ttsMainSC.png?raw=true" alt="Screenshot of Site">
 
 ### Voice Selection
-*[Screenshot placeholder - Add screenshot of the voice dropdown with all language options]*
-
+<img src="https://github.com/Lightmean03/interactive-Kokoro-tts/blob/master/Example%20Screenshots/ttsVoiceMenuSC.png?raw=true" alt="Voice Selection Picture">
 ### Audio Generation
-*[Screenshot placeholder - Add screenshot of the audio player and controls]*
+<img src="https://github.com/Lightmean03/interactive-Kokoro-tts/blob/master/Example%20Screenshots/ttsAudioMenuSC.png?raw=true" alt="Audio Generation and Control Picture"> 
 
 ## 🚀 Quick Start
 
