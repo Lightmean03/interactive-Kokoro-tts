@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     espeak-ng \
     libsndfile1 \
     ffmpeg \
+    libblas3 \
+    liblapack3 \
+    libopenblas-base \
     && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables
@@ -26,7 +29,7 @@ ENV FLASK_ENV=production
 # Copy requirements first for better caching
 COPY requirements.txt .
 
-# Install Python dependencies
+# Install Python dependencies - PyTorch will auto-detect CUDA availability
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
