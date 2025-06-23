@@ -33,26 +33,33 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Install spaCy English model globally (before switching to non-root user)
 RUN python -m spacy download en_core_web_sm
 
-# Create necessary directories
-RUN mkdir -p /app/templates /app/static /app/temp
+# Create a non-root user for security
+RUN adduser --disabled-password --gecos '' appuser
+
+# Create necessary directories with proper permissions
+RUN mkdir -p /app/templates /app/static /app/temp /home/appuser/.cache/huggingface && \
+    chown -R appuser:appuser /app /home/appuser/.cache
 
 # Copy application files
 COPY app.py .
 COPY templates/ ./templates/
 
-# Create a non-root user for security
-RUN adduser --disabled-password --gecos '' appuser && \
-    chown -R appuser:appuser /app
+# Set proper ownership for copied files
+RUN chown -R appuser:appuser /app
 
 # Switch to non-root user
 USER appuser
+
+# Set Hugging Face cache directory
+ENV HF_HOME=/home/appuser/.cache/huggingface
+ENV TRANSFORMERS_CACHE=/home/appuser/.cache/huggingface
 
 # Expose the port
 EXPOSE 5000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5000/ || exit 1
+    CMD curl -f http://localhost:5000/health || exit 1
 
 # Run the application
 CMD ["python", "app.py"]
