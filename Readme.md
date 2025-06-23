@@ -25,6 +25,7 @@ A web-based frontend for the [Kokoro Text-to-Speech model](https://huggingface.c
 
 ### Voice Selection
 <img src="https://github.com/Lightmean03/interactive-Kokoro-tts/blob/master/Example%20Screenshots/ttsVoiceMenuSC.png?raw=true" alt="Voice Selection Picture">
+
 ### Audio Generation
 <img src="https://github.com/Lightmean03/interactive-Kokoro-tts/blob/master/Example%20Screenshots/ttsAudioMenuSC.png?raw=true" alt="Audio Generation and Control Picture"> 
 
